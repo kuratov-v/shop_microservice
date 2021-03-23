@@ -5,13 +5,22 @@ from product.schemas import Product
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 
+import json
+
 
 class ProductManager:
     def __init__(self, _mongodb: AsyncIOMotorClient):
         self.mongodb = _mongodb
 
-    async def get_products(self):
-        query_products = await self.mongodb.find().to_list(length=None)
+    async def get_products(self, name: str = None, params: str = None):
+        search_filter = {}
+        if name is not None:
+            search_filter['name'] = name
+        if params is not None:
+            params = json.loads(params)
+            for key, value in params.items():
+                search_filter['params.' + key] = value
+        query_products = await self.mongodb.find(search_filter).to_list(length=None)
         return query_products
 
     async def get_product_detail(self, pk: str):
