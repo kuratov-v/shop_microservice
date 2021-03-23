@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from routers.product import router as product_router
+from product.routers import router as product_router
 
 app = FastAPI()
 
