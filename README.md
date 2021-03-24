@@ -32,6 +32,9 @@ REST API методы:
 
 Запуск сервиса:
 ```
+docker run -d -p 27017:27017 mongo
+```
+```
 git clone https://github.com/kuratov-v/shop_microservice.git
 cd shop_microservice
 python3 -m venv venv
