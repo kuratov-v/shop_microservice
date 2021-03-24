@@ -27,3 +27,19 @@ REST API методы:
   - создать товар
   - найти его по параметру
   - получить детали найденного товара
+
+---
+
+Запуск сервиса:
+```
+git clone https://github.com/kuratov-v/shop_microservice.git
+cd shop_microservice
+python3 -m venv venv
+source venv/bin/activate
+uvicorn main:app --reload
+```
+Документация: 
+```
+http://localhost:8000/docs
+http://localhost:8000/redoc
+```
